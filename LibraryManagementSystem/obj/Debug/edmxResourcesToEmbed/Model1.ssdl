@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Library_Management_SystemModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Library_Management_SystemModelStoreContainer">
+    <EntitySet Name="Book" EntityType="Library_Management_SystemModel.Store.Book" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Borrow" EntityType="Library_Management_SystemModel.Store.Borrow" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Staff_Member" EntityType="Library_Management_SystemModel.Store.Staff_Member" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Student_Member" EntityType="Library_Management_SystemModel.Store.Student_Member" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="Book_ID" />
+    </Key>
+    <Property Name="Book_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Language" Type="nvarchar(max)" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="Category" Type="nvarchar(max)" />
+    <Property Name="Edition" Type="nvarchar(max)" />
+    <Property Name="ISBN" Type="nvarchar(max)" />
+    <Property Name="DDC_No" Type="nvarchar(max)" />
+    <Property Name="Author" Type="nvarchar(max)" />
+    <Property Name="Publisher" Type="nvarchar(max)" />
+    <Property Name="Publication_Date" Type="nvarchar(max)" />
+    <Property Name="Attachment" Type="nvarchar(max)" />
+    <Property Name="Price" Type="nvarchar(max)" />
+    <Property Name="Recieved_By" Type="nvarchar(max)" />
+    <Property Name="Other_Details" Type="nvarchar(max)" />
+    <Property Name="Reference" Type="nvarchar(max)" />
+    <Property Name="Availability" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Borrow">
+    <Key>
+      <PropertyRef Name="Book_ID" />
+      <PropertyRef Name="Member_ID" />
+    </Key>
+    <Property Name="Book_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Member_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Member_Type" Type="nvarchar(max)" />
+    <Property Name="Issu_Date" Type="datetime" Nullable="false" />
+    <Property Name="Due_Date" Type="datetime" Nullable="false" />
+    <Property Name="Contact_NO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Staff_Member">
+    <Key>
+      <PropertyRef Name="Member_ID" />
+    </Key>
+    <Property Name="Member_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NIC" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Contact_NO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Academic/Non_Academic" Type="nvarchar(max)" />
+    <Property Name="Permenent/Visiting" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student_Member">
+    <Key>
+      <PropertyRef Name="Member_ID" />
+    </Key>
+    <Property Name="Member_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Admission_NO" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Form_NO" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NIC" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Contact_NO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="Course_ID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Enroll_Date" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+</Schema>

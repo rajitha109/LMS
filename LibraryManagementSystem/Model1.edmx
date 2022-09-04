@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Library_Management_SystemModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Library_Management_SystemModelStoreContainer">
+          <EntitySet Name="Book" EntityType="Library_Management_SystemModel.Store.Book" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Borrow" EntityType="Library_Management_SystemModel.Store.Borrow" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Staff_Member" EntityType="Library_Management_SystemModel.Store.Staff_Member" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Student_Member" EntityType="Library_Management_SystemModel.Store.Student_Member" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Book_ID" />
+          </Key>
+          <Property Name="Book_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Language" Type="nvarchar(max)" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Category" Type="nvarchar(max)" />
+          <Property Name="Edition" Type="nvarchar(max)" />
+          <Property Name="ISBN" Type="nvarchar(max)" />
+          <Property Name="DDC_No" Type="nvarchar(max)" />
+          <Property Name="Author" Type="nvarchar(max)" />
+          <Property Name="Publisher" Type="nvarchar(max)" />
+          <Property Name="Publication_Date" Type="nvarchar(max)" />
+          <Property Name="Attachment" Type="nvarchar(max)" />
+          <Property Name="Price" Type="nvarchar(max)" />
+          <Property Name="Recieved_By" Type="nvarchar(max)" />
+          <Property Name="Other_Details" Type="nvarchar(max)" />
+          <Property Name="Reference" Type="nvarchar(max)" />
+          <Property Name="Availability" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Borrow">
+          <Key>
+            <PropertyRef Name="Book_ID" />
+            <PropertyRef Name="Member_ID" />
+          </Key>
+          <Property Name="Book_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Member_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Member_Type" Type="nvarchar(max)" />
+          <Property Name="Issu_Date" Type="datetime" Nullable="false" />
+          <Property Name="Due_Date" Type="datetime" Nullable="false" />
+          <Property Name="Contact_NO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Staff_Member">
+          <Key>
+            <PropertyRef Name="Member_ID" />
+          </Key>
+          <Property Name="Member_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NIC" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Contact_NO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Academic/Non_Academic" Type="nvarchar(max)" />
+          <Property Name="Permenent/Visiting" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student_Member">
+          <Key>
+            <PropertyRef Name="Member_ID" />
+          </Key>
+          <Property Name="Member_ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Admission_NO" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Form_NO" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NIC" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Contact_NO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Course_ID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Enroll_Date" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Library_Management_SystemModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Library_Management_SystemEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Borrows" EntityType="Library_Management_SystemModel.Borrow" />
+          <EntitySet Name="Student_Member" EntityType="Library_Management_SystemModel.Student_Member" />
+          <EntitySet Name="Staff_Member" EntityType="Library_Management_SystemModel.Staff_Member" />
+          <EntitySet Name="Books" EntityType="Library_Management_SystemModel.Book" />
+        </EntityContainer>
+        <EntityType Name="Borrow">
+          <Key>
+            <PropertyRef Name="Book_ID" />
+            <PropertyRef Name="Member_ID" />
+          </Key>
+          <Property Name="Book_ID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Member_ID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Issu_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Due_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Contact_NO" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="Member_Type" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Student_Member">
+          <Key>
+            <PropertyRef Name="Member_ID" />
+          </Key>
+          <Property Name="Member_ID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Admission_NO" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Form_NO" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="NIC" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Contact_NO" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Course_ID" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Enroll_Date" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Staff_Member">
+          <Key>
+            <PropertyRef Name="Member_ID" />
+          </Key>
+          <Property Type="String" Name="Member_ID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NIC" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Contact_NO" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Academic_Non_Academic" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Permenent_Visiting" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Book_ID" />
+          </Key>
+          <Property Type="String" Name="Book_ID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Language" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Title" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Category" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Edition" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ISBN" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DDC_No" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Author" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Publisher" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Publication_Date" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Attachment" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Price" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Recieved_By" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Other_Details" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Reference" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Availability" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Library_Management_SystemModelStoreContainer" CdmEntityContainer="Library_Management_SystemEntities">
+          <EntitySetMapping Name="Borrows">
+            <EntityTypeMapping TypeName="Library_Management_SystemModel.Borrow">
+              <MappingFragment StoreEntitySet="Borrow">
+                <ScalarProperty Name="Member_Type" ColumnName="Member_Type" />
+                <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Issu_Date" ColumnName="Issu_Date" />
+                <ScalarProperty Name="Due_Date" ColumnName="Due_Date" />
+                <ScalarProperty Name="Contact_NO" ColumnName="Contact_NO" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student_Member">
+            <EntityTypeMapping TypeName="Library_Management_SystemModel.Student_Member">
+              <MappingFragment StoreEntitySet="Student_Member">
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+                <ScalarProperty Name="Admission_NO" ColumnName="Admission_NO" />
+                <ScalarProperty Name="Form_NO" ColumnName="Form_NO" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NIC" ColumnName="NIC" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Contact_NO" ColumnName="Contact_NO" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Course_ID" ColumnName="Course_ID" />
+                <ScalarProperty Name="Enroll_Date" ColumnName="Enroll_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff_Member">
+            <EntityTypeMapping TypeName="Library_Management_SystemModel.Staff_Member">
+              <MappingFragment StoreEntitySet="Staff_Member">
+                <ScalarProperty Name="Permenent_Visiting" ColumnName="Permenent/Visiting" />
+                <ScalarProperty Name="Academic_Non_Academic" ColumnName="Academic/Non_Academic" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contact_NO" ColumnName="Contact_NO" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="NIC" ColumnName="NIC" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="Library_Management_SystemModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="Availability" ColumnName="Availability" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="Other_Details" ColumnName="Other_Details" />
+                <ScalarProperty Name="Recieved_By" ColumnName="Recieved_By" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+                <ScalarProperty Name="Publication_Date" ColumnName="Publication_Date" />
+                <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="DDC_No" ColumnName="DDC_No" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="Edition" ColumnName="Edition" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Book_ID" ColumnName="Book_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Library_Management_SystemModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Library_Management_SystemEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Borrows" EntityType="Library_Management_SystemModel.Borrow" />
+    <EntitySet Name="Student_Member" EntityType="Library_Management_SystemModel.Student_Member" />
+    <EntitySet Name="Staff_Member" EntityType="Library_Management_SystemModel.Staff_Member" />
+    <EntitySet Name="Books" EntityType="Library_Management_SystemModel.Book" />
+  </EntityContainer>
+  <EntityType Name="Borrow">
+    <Key>
+      <PropertyRef Name="Book_ID" />
+      <PropertyRef Name="Member_ID" />
+    </Key>
+    <Property Name="Book_ID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Member_ID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Issu_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Due_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Contact_NO" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Type="String" Name="Member_Type" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Student_Member">
+    <Key>
+      <PropertyRef Name="Member_ID" />
+    </Key>
+    <Property Name="Member_ID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Admission_NO" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Form_NO" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="NIC" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Contact_NO" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Course_ID" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Enroll_Date" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Staff_Member">
+    <Key>
+      <PropertyRef Name="Member_ID" />
+    </Key>
+    <Property Type="String" Name="Member_ID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="NIC" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Gender" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Contact_NO" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Academic_Non_Academic" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Permenent_Visiting" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="Book_ID" />
+    </Key>
+    <Property Type="String" Name="Book_ID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Language" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Title" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Category" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Edition" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ISBN" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DDC_No" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Author" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Publisher" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Publication_Date" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Attachment" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Price" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Recieved_By" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Other_Details" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Reference" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Availability" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>
